@@ -1,3 +1,10 @@
+
+
+import { useForm } from "react-hook-form"
+import * as Yup from "yup";
+import { useFormik } from 'formik';
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import {
     Container,
     Box,
@@ -15,20 +22,42 @@ import {
 
 
 
+
+
+
 export const Login = () => {
 
+const schema = Yup.object().shape({
+name: Yup.string().required(),
+email: Yup.string().required(),
+tel: Yup.string().required('Por favor, informe o seu telefone'),
+arquivo: Yup.mixed().required('Por favor, adicione uma foto')
+
+})
+
+
+
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema)
+    })
+
+    const onSubmit = (data) => console.log(data)
 
 
     return (
 
+
+
+
         <Container>
 
 
-
-
-
-            <Box>
-
+            <Box onSubmit={handleSubmit(onSubmit)}>
 
                 <BoxHeder>
                     <h1>Abertura de ticket</h1>
@@ -37,25 +66,27 @@ export const Login = () => {
                 </BoxHeder>
 
 
-                <BoxInput>
+                <BoxInput >
                     <Label htmlFor="nome">Nome <Span>*</Span></Label>
-                    <input id="nome" placeholder='Digite seu nome' type="text" />
+                    <input  {...register("name")} id="nome" placeholder='Digite seu nome' type="text" />
                 </BoxInput>
 
-                <BoxInput>
+                <BoxInput form onSubmit={handleSubmit(onSubmit)}>
 
                     <Label htmlFor="email">Email <Span>*</Span></Label>
-                    <input id="email" placeholder='Digite seu email' type="text" />
+                    <input  {...register("email")} id="email" placeholder='Digite seu email' type="text" />
                 </BoxInput>
 
-                <BoxInput>
+                <BoxInput form onSubmit={handleSubmit(onSubmit)}>
                     <Label htmlFor="telefone">Telefone <Span>*</Span></Label>
-                    <input id="telefone" placeholder='(00) 9 0000-0000' type="text" />
+                    <input {...register("tel")} id="telefone" placeholder='(00) 9 0000-0000' type="text" />
+
+
                 </BoxInput>
 
                 <Label htmlFor="tipoInformacoes">Tipo de informação <Span>*</Span></Label>
 
-                <Select id="tipoInformacoes">
+                <Select {...register("opitions")} id="tipoInformacoes">
                     <option value="Selecione uma opção">Selecione uma opção</option>
                     <option value="opcao1">Opção 1</option>
                     <option value="opcao2">Opção 2</option>
@@ -68,9 +99,9 @@ export const Login = () => {
                         Anexar foto
                         <input
                             type="file"
-                            id="file-upload"
                             accept=".jpg, .jpeg, .png"
                             style={{ display: 'none' }}
+                            {...register("arquivo")}
                         />
                     </ label>
 
@@ -78,11 +109,13 @@ export const Login = () => {
                         {'foto.jpg'}
                         <input
                             type="text"
+
                             style={{ display: 'none' }}
+
                         />
                     </LabelArquive>
 
-                    
+
                 </LabelUpload>
 
 
@@ -90,15 +123,15 @@ export const Login = () => {
 
 
                 <Label>Descrição <Span>*</Span></Label>
-                <TextArea rows={10} placeholder='Descreva seu problema....' name="" id=""></TextArea>
+                <TextArea  {...register("descripition")} rows={10} placeholder='Descreva seu problema....'></TextArea>
+
+
+
+                <Button type='submit' >Enviar</Button >
 
 
 
 
-
-
-
-                <Button >Enviar</Button >
 
 
 

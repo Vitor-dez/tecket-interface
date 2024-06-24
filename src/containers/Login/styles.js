@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 
+
 export const Container = styled.div`
 
 width: 100%;
@@ -19,7 +20,7 @@ padding: 20px;
 
 
 
-export const Box = styled.div`
+export const Box = styled.form`
 
 width: 416px;
 height: 100%;
@@ -86,6 +87,12 @@ input{
     border: solid 1px #e0e1e2;
     margin-bottom: 20px;
     font-family: "Roboto Condensed", sans-serif;
+}
+
+
+
+input:hover{
+    box-shadow: 0px 1px 23px 2px rgba(220,239,250,1);
 }
 
 `
