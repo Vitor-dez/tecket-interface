@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 
 
+
 export const Container = styled.div`
 
 width: 100%;
@@ -32,6 +33,17 @@ flex-direction: column;
 
 
 `
+
+ export const ErrorMessage = styled.p`
+ font-size: normal;
+ font-weight: normal;
+ font-family: "Roboto Condensed", sans-serif;
+ font-size: 14px;
+ line-height: 16px;
+ color: #cc1717;
+margin-bottom: 20px;
+ 
+ `
 
 
 export const BoxHeder = styled.div`
@@ -84,8 +96,7 @@ input{
     padding: 10px;
     margin-top: 10px;
     border-radius: 4px;
-    border: solid 1px #e0e1e2;
-    margin-bottom: 20px;
+    border: 1px solid #e0e1e2 ;
     font-family: "Roboto Condensed", sans-serif;
 }
 
@@ -155,7 +166,17 @@ label{
     background-color:#e4e4e4 ;
     border-radius: 4px 0px 0 4px ; 
   
-}`
+}
+
+input{
+
+    padding-right: 30px;
+    display: none;
+
+}
+
+
+`
 
 
 
