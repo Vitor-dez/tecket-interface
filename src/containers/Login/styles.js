@@ -30,18 +30,16 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 
-
-
 `
 
  export const ErrorMessage = styled.p`
  font-size: normal;
- font-weight: normal;
+ font-weight: bold;
  font-family: "Roboto Condensed", sans-serif;
- font-size: 14px;
+ font-size: 11px;
  line-height: 16px;
  color: #cc1717;
-margin-bottom: 20px;
+margin: 3px;
  
  `
 
@@ -94,7 +92,7 @@ input{
     height: 38px;
     font-weight: 400;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 10px ;
     border-radius: 4px;
     border: 1px solid #e0e1e2 ;
     font-family: "Roboto Condensed", sans-serif;
@@ -105,6 +103,12 @@ input{
 input:hover{
     box-shadow: 0px 1px 23px 2px rgba(220,239,250,1);
 }
+
+
+
+.error {
+        border: 1px solid #cc1717;
+    }
 
 `
 
@@ -121,7 +125,7 @@ font-family: "Roboto", sans-serif;
 
 
 export const Span = styled.span`
-color: red;
+color: #cc1717;
 font-weight:bold;
 
 `;
@@ -137,9 +141,10 @@ export const Select = styled.select`
     margin-top: 10px;
     border-radius: 4px;
     border: solid 1px #e0e1e2;
-    margin-bottom: 20px;
+    margin: 0 10 ;
     font-family: "Roboto Condensed", sans-serif;
     color: grey;
+
 `
 
 
@@ -151,7 +156,7 @@ color: #313223;
 font-weight:500;
 font-family: "Roboto", sans-serif;
 display: flex;
-margin: 0 0 20px ;
+margin: 2 0 10px ;
 
 
 label{
@@ -196,7 +201,7 @@ width: auto;
 border-radius: 4px;
 border: solid 1px #e0e1e2 ;
 padding: 10px;
-font-size: 16px;
+font-size: 12px;
 font-family: "Roboto Condensed", sans-serif;
 margin: 10px 0 20px ;
 
@@ -216,7 +221,11 @@ border-radius: 4px;
 color: #ffff;
 font-size: 16px;
 font-family: "Roboto Condensed", sans-serif;
+
+
 `
+
+
 
 
 
