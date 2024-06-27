@@ -101,7 +101,7 @@ input{
 
 
 input:hover{
-    box-shadow: 0px 1px 23px 2px rgba(220,239,250,1);
+    box-shadow: 0px 0px 2px 0px rgba(9,164,184,1);
 }
 
 

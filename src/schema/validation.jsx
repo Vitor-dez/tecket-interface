@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const schema = Yup.object().shape({
+export default schema = Yup.object().shape({
     name: Yup.string().required('Campo obrigatório'),
     email: Yup.string().email("Digite um e-mail válido").required('Campo obrigatório'),
     tel: Yup.string().required('Campo obrigatório')

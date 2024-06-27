@@ -98,7 +98,7 @@ export const Login = () => {
                 <ErrorMessage>{errors.file?.message}</ErrorMessage>
                 
                 <Label>Descrição <Span>*</Span></Label>
-                <TextArea className={errors.descripition ? 'error' : ''} {...register("descripition")} rows={10} placeholder='Descreva seu problema....' error={errors.descripition} />
+                <TextArea className={errors.descripition ? 'error' : ''} {...register("descripition")} rows={7} placeholder='Descreva seu problema....' error={errors.descripition} />
                 <ErrorMessage>{errors.descripition?.message}</ErrorMessage>
 
                 <Button type='submit'>Enviar</Button>

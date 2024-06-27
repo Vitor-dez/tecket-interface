@@ -6,7 +6,7 @@ export const useFileInfo = () => {
     const handleFileChange = (event, setValue, clearErrors) => {
         const file = event.target.files[0];
         if (file) {
-            setFileInfo({ name: file.name, type: file.type });
+            setFileInfo({ name: file.name, });
             setValue('file', file); 
             clearErrors('file');
         }
