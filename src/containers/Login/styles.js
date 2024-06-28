@@ -203,7 +203,7 @@ border: solid 1px #e0e1e2 ;
 padding: 10px;
 font-size: 12px;
 font-family: "Roboto Condensed", sans-serif;
-margin: 10px 0 20px ;
+margin: 2px 0 20px ;
 
 `
 

@@ -32,7 +32,7 @@ export const Login = () => {
         resolver: yupResolver(schema)
     });
 
-    const [fileInfo, handleFileChange] = useFileInfo(); 
+    const [fileInfo, handleFileChange] = useFileInfo();
     const onSubmit = (data) => {
         console.log(data);
         // Aqui você pode enviar os dados para a API
@@ -96,11 +96,22 @@ export const Login = () => {
                     </LabelArquive>
                 </LabelUpload>
                 <ErrorMessage>{errors.file?.message}</ErrorMessage>
-                
-                <Label>Descrição <Span>*</Span></Label>
-                <TextArea className={errors.descripition ? 'error' : ''} {...register("descripition")} rows={7} placeholder='Descreva seu problema....' error={errors.descripition} />
-                <ErrorMessage>{errors.descripition?.message}</ErrorMessage>
 
+                <Label htmlFor="descri">Descrição <Span>*</Span></Label>
+                <ErrorMessage>{errors.descri?.message}</ErrorMessage>
+
+                <TextArea
+                    className={errors.descri ? 'error' : ''}
+                    {...register("descri")}
+                    id="descri"
+                    rows={7}
+                    placeholder='Descreva seu problema....'
+                    onChange={(e) => {
+                        setValue('descri', e.target.value); // Atualiza o valor no estado do formulário
+                        clearErrors('descri'); // Limpa o erro do campo
+                    }}
+                />
+              
                 <Button type='submit'>Enviar</Button>
             </Box>
         </Container>

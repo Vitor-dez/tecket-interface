@@ -15,6 +15,9 @@ export const Icon = styled.img`
   background: url('${SuccessIcon}');
   border-radius: 50px;
   margin-bottom: 30px;
+  background-size: cover;
+  
+
 `;
 
 export const Box = styled.div`
