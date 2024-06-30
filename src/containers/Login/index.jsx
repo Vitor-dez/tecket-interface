@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputMask from 'react-input-mask';
+import { useNavigate } from 'react-router-dom';
 import { LTMHelpRequestType } from '../../enum/enum.jsx';
 import { schema } from '../../schema/validation.jsx';
 import { useFileInfo } from '../../utils/handleFileChange.jsx';
@@ -22,6 +23,11 @@ import {
 } from './styles';
 
 export const Login = () => {
+
+    
+    const navigate = useNavigate();
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -33,10 +39,24 @@ export const Login = () => {
     });
 
     const [fileInfo, handleFileChange] = useFileInfo();
+
     const onSubmit = (data) => {
-        console.log(data);
-        // Aqui você pode enviar os dados para a API
+        
+        setFormSubmitted(true);
+
+        navigate('/tecket-interface/sucesso',); 
+      
+    setTimeout(()=>{
+        navigate('/tecket-interface/Login',);
+    },10000)
+    
+
     };
+
+
+
+    
+
 
     return (
         <Container>
@@ -111,7 +131,7 @@ export const Login = () => {
                         clearErrors('descri'); // Limpa o erro do campo
                     }}
                 />
-              
+
                 <Button type='submit'>Enviar</Button>
             </Box>
         </Container>
