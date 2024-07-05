@@ -13,7 +13,7 @@ export const SuccessScreen = () => {
                 <h1>Ticket aberto com sucesso!</h1>
                 <p>
                     Entraremos em contato assim que possível através do seu email 
-                    <span> fulano@hotmail.com </span> para solucionar o problema.
+                    <span> vvitorsilva@gmail.com </span> para solucionar o problema.
                 </p>
                 <p>
                     N° do seu ticket: <span>1234</span>

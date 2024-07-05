@@ -101,7 +101,7 @@ input{
 
 
 input:hover{
-    box-shadow: 0px 0px 2px 0px rgba(9,164,184,1);
+    box-shadow: 0px 0px 3px 0px rgba(34,178,214,1);
 }
 
 
@@ -144,7 +144,7 @@ export const Select = styled.select`
     margin: 0 10 ;
     font-family: "Roboto Condensed", sans-serif;
     color: grey;
-
+    cursor: pointer;
 `
 
 
