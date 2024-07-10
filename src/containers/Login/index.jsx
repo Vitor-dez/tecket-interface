@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { LTMHelpRequestType } from '../../enum/enum.jsx';
 import { schema } from '../../schema/validation.jsx';
 import { useFileInfo } from '../../utils/handleFileChange.jsx';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import {
@@ -25,10 +26,10 @@ import {
 
 export const Login = () => {
 
-
+    const api = axios
     const navigate = useNavigate();
     const [formSubmitted, setFormSubmitted] = useState(false);
-    const [formData, setFormData] = useState(null); 
+    const [formData, setFormData] = useState(null);
     const [fileInfo, handleFileChange] = useFileInfo();
 
     const {
@@ -42,45 +43,52 @@ export const Login = () => {
     });
 
 
-   
+
 
 
 
     const onSubmit = async (data) => {
-
+        console.log(data)
         setFormSubmitted(true);
-      
 
-        try {
-            const formData = new FormData();
-            formData.append('message', data.descri);
-            formData.append('senderEmail', data.email);
-            formData.append('senderName', data.name);
-            formData.append('senderPhone', data.tel);
-            formData.append('helpRequestType', data.opitions);
-            formData.append('images', data.file[0]); 
-        
-            const response = await axios.post(
-              'http://api-stagging.licitem.com.br/api/v1/help-request',
-              formData,
-              {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
-                  'accept': 'application/json'
-                }
-              }
-            );
-        
-            console.log('Resposta da API:', response.data);
-            setFormData(response.data.data); 
-            navigate('/tecket-interface/sucesso');
-          } catch (error) {
-            console.error('Erro ao enviar o formulário:', error);
-            
-          }
+        const formData = new FormData();
+        formData.append('message', data.descri);
+        formData.append('senderEmail', data.email);
+        formData.append('senderName', data.name);
+        formData.append('senderPhone', data.tel);
+        formData.append('helpRequestType', data.opitions);
+        formData.append('image', data.file[0]);
+
+        const response = await toast.promise(
+
+            api.post('http://api-stagging.licitem.com.br/api/v1/help-request', formData,
+                {
+                    headers:
+                    {
+                        'Content-Type': 'multipart/form-data',
+                        'accept': 'application/json'
+                    }
+
+                }),
+            {
+                pending: 'Verificando seus dados',
+                success: 'Enviado com sucesso',
+                error: 'Algo deu errado tente novamente'
+            }
 
 
-   
+        );
+
+
+
+        console.log('Resposta da API:', response.data);
+
+        setFormData(response.data.data);
+        navigate('/tecket-interface/sucesso', { state: { userEmail: data.email } });
+
+
+
+
 
     };
 
@@ -119,6 +127,7 @@ export const Login = () => {
                     <Label htmlFor="telefone">Telefone <Span>*</Span></Label>
                     <InputMask
                         mask="(99) 9 9999-9999"
+
                         {...register("tel")}
                         onChange={(e) => {
                             setValue('tel', e.target.value);
@@ -146,7 +155,7 @@ export const Login = () => {
                 <LabelUpload>
                     <label>
                         Anexar foto
-                        <input {...register("file")} type="file" accept=".jpg, .jpeg, .png, .svg" onChange={(e) =>
+                        <input {...register("file")} type="file" accept=".jpg, .jpeg, .png," onChange={(e) =>
                             handleFileChange(e, setValue, clearErrors)} />
                     </label>
 
@@ -166,19 +175,19 @@ export const Login = () => {
 
 
 
-                <Label htmlFor="descri">Descrição <Span>*</Span></Label>
+                <Label htmlFor="description">Descrição <Span>*</Span></Label>
 
-                <ErrorMessage>{errors.descri?.message}</ErrorMessage>
+                <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
                 <TextArea
-                    className={errors.descri ? 'error' : ''}
-                    {...register("descri")}
-                    id="descri"
+                    className={errors.description ? 'error' : ''}
+                    {...register("description")}
+                    id="description"
                     rows={7}
                     placeholder='Descreva seu problema....'
                     onChange={(e) => {
-                        setValue('descri', e.target.value);
-                        clearErrors('descri');
+                        setValue('description', e.target.value);
+                        clearErrors('description');
                     }}
                 />
 
