@@ -8,6 +8,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+padding: 15px 15px;
+ 
 `;
 
 export const Icon = styled.img`
@@ -15,7 +17,7 @@ export const Icon = styled.img`
   height: 100px; 
   background: url('${SuccessIcon}');
   border-radius: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background-size: cover;
   
 
@@ -23,7 +25,7 @@ export const Icon = styled.img`
 
 export const Box = styled.div`
   width: 400px;
-  height: 300px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +33,7 @@ export const Box = styled.div`
   text-align: center;
   font-family: "Roboto Condensed", sans-serif;
   line-height: 30px;
+
  
 
   h1 {
