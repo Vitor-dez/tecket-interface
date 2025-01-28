@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Container, Icon, Box, Button } from '../screenn/styles';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
